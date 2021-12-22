@@ -1,13 +1,21 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+name: 'Inspector'
+description: 'Checks if files and folders structure of the project follow kebab-case style'
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  token:
+    description: 'GitHub token'
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The current time after waiting'
+  sources:
+    description: 'String with folders to watch separated by commas'
+    required: false
+  exclude:
+    description: 'String with folders or files to exclude from watch'
+    required: false
+  release_branches:
+    description: 'String with branches to watch separated by commas'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
+branding:
+  icon: check-circle
+  color: green
